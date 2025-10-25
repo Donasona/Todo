@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do List</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input { padding: 10px; width: 200px; }
+        button { padding: 10px; }
+        .task { margin: 10px auto; width: 300px; display: flex; justify-content: space-between; border: 1px solid #ccc; padding: 10px; }
+        .task span { flex-grow: 1; text-align: left; }
+        .task a { text-decoration: none; color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>My To-Do List</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.title }}
+        <button type="submit">Add</button>
+    </form>
+    <br>
+    <!-- {% for task in tasks %}
+        <div class="task">
+            <span>{{ task.title }}</span>
+            <a href="{% url 'delete_task' task.id %}">x</a>
+        </div>
+    {% endfor %} -->
+</body>
+</html>
+
