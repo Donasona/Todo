@@ -8,12 +8,12 @@ class Add_task_view(View):
         form = TaskForm()
         return render(request,"task_add.html",{"form":form})
     
-    def post(self,request):
-        print(request.POST)
-        form =TaskForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            task =form.save(commit=False)
-            task.user =request.user
-            task.save()
-        return render(request,"task_add.html",{"form":form})       
+    # def post(self,request):
+    #     print(request.POST)
+    #     form =TaskForm(request.POST)
+    #     if form.is_valid():
+    #         print(form.cleaned_data)
+    #         task =form.save(commit=False)
+    #         task.user =request.user
+    #         task.save()
+    #     return render(request,"task_add.html",{"form":form})       
