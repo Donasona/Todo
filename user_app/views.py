@@ -3,9 +3,9 @@ from django.shortcuts import render,redirect
 # Create your views here.
 from django.views.generic import View
 
-from user_app.forms import Userregisterform,Taskform
+from user_app.forms import Userregisterform
 
-from user_app.models import User,Task
+from user_app.models import User
 
 from django.contrib.auth import authenticate,login,logout
 
@@ -56,10 +56,5 @@ class LogoutView(View):
         logout(request)
         return redirect("login")    
 
-class TaskView(View):
-    def get(self,request):
-        tasks =Task.objects.all()
-        form = Taskform()
-        return render(request,"todo_list.html",{'tasks':tasks,'form':form})
 
 
