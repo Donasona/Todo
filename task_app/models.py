@@ -12,4 +12,10 @@ class Task(models.Model):
 
     is_completed = models.BooleanField(default=False)
 
-    priority = models.Choices("high","low") 
+    # priority = models.Choices("high","low") 
+
+    priority_choices = [
+        ('high', 'High'),
+        ('low', 'Low'),
+    ]
+    priority=models.CharField(max_length=50,choices=priority_choices)
