@@ -27,4 +27,6 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(),name="logout"),
     path('addtask/',Add_task_view.as_view()),
     path('list_task/',Tasklistview.as_view(),name="task_list"),
+    path('update/<int:pk>',Taskupdateview.as_view()),
+    path('delete/',Taskdelete.as_view(),name="task_delete"), 
 ]

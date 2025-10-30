@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import View
+from django.shortcuts import render,redirect
+from django.views.generic import View,UpdateView
 from task_app.forms import TaskForm
 from task_app.models import Task
+from django.shortcuts import get_object_or_404
 # Create your views here.
 class Add_task_view(View):
     def get(self,request):
@@ -23,3 +24,14 @@ class Tasklistview(View):
         task = Task.objects.filter(user=request.user)
         return render(request,"task_list.html",{"task":task})    
          
+class Taskupdateview(UpdateView):
+    model=Task
+    form_class=TaskForm
+    template_name="task_update.html"
+
+class Taskdelete(View):
+    def get(self,request,**kwargs):
+        id =kwargs.get("pk")
+        task =get_object_or_404(Task,id=id,user=request.user)
+        task.delete()
+        return redirect("signup")
