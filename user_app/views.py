@@ -49,7 +49,7 @@ class LoginView(View):
         user = authenticate(request,username=username,password=password)
         if user:
             login(request,user)
-            return redirect("signup")
+            return redirect("home")
         return render(request,"signin.html")
 
 class LogoutView(View):

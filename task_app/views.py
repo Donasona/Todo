@@ -3,6 +3,7 @@ from django.views.generic import View,UpdateView
 from task_app.forms import TaskForm
 from task_app.models import Task
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 # Create your views here.
 class Add_task_view(View):
     def get(self,request):
@@ -28,10 +29,14 @@ class Taskupdateview(UpdateView):
     model=Task
     form_class=TaskForm
     template_name="task_update.html"
+    success_url=reverse_lazy("home")
+
+    def get_queryset(self):
+        return Task.objects.filter(user =self.request.user)
 
 class Taskdelete(View):
     def get(self,request,**kwargs):
         id =kwargs.get("pk")
         task =get_object_or_404(Task,id=id,user=request.user)
         task.delete()
-        return redirect("signup")
+        return redirect("home")
