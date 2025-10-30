@@ -6,6 +6,7 @@ from django.views.generic import View
 from user_app.forms import Userregisterform
 
 from user_app.models import User
+from task_app.models import Task
 
 from django.contrib.auth import authenticate,login,logout
 
@@ -55,6 +56,11 @@ class LogoutView(View):
     def get(self,request):
         logout(request)
         return redirect("login")    
+    
+class Baseview(View):
+    def get(self,request):
+        task = Task.objects.filter(user =request.user)
+        return render(request,"home.html",{"task":task})  
 
 
 
