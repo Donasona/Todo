@@ -16,4 +16,10 @@ class Add_task_view(View):
             task =form.save(commit=False)
             task.user =request.user
             task.save()
-        return render(request,"task_add.html",{"form":form})       
+        return render(request,"task_add.html",{"form":form})  
+
+class Tasklistview(View):
+    def get(self,request):
+        task = Task.objects.filter(user=request.user)
+        return render(request,"task_list.html",{"task":task})    
+         
