@@ -46,6 +46,12 @@
     .badge-pending{
       background-color: #6c757d;
     }
+    .btn-complete{
+      background-color: #00b4d8;
+    }
+    .btn-complete:hover{
+      background-color: #007bff;
+    }
   </style>
 </head>
 <body>
@@ -62,15 +68,13 @@
 
   <div class="container">
 
-    <!-- Add Expense Button -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h4 class="fw-semibold">Recent Tasks</h4>
       <a href="{% url 'task_add' %}" class="btn btn-add ">
-       + Add new
+       + Add Task
       </a>
     </div>
 
-    <!-- Transactions Table -->
     <div class="card">
       <div class="card-body">
         

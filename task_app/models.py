@@ -12,8 +12,6 @@ class Task(models.Model):
 
     is_completed = models.BooleanField(default=False)
 
-    # priority = models.Choices("high","low") 
-
     priority_choices = [
         ('high', 'High'),
         ('low', 'Low')
