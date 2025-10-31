@@ -7,6 +7,7 @@ from user_app.forms import Userregisterform
 
 from user_app.models import User
 from task_app.models import Task
+from django.shortcuts import get_object_or_404
 
 from django.contrib.auth import authenticate,login,logout
 
@@ -61,6 +62,5 @@ class Baseview(View):
     def get(self,request):
         task = Task.objects.filter(user =request.user)
         return render(request,"home.html",{"task":task})  
-
 
 

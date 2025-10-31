@@ -40,6 +40,12 @@
       background-color: rgb(31, 86, 31);
       color: white;
     }
+    .badge-complete{
+      background-color: #28a745;
+    }
+    .badge-pending{
+      background-color: #6c757d;
+    }
   </style>
 </head>
 <body>
@@ -85,12 +91,18 @@
               <td>{{ t.created_date }}</td>
               <!-- <td>{{t.user}}</td> -->
               <td>{{ t.task }}</td>
-              <td>{{ t.is_completed }}</td>
+              <td>{% if t.is_completed %}
+                <span class="badge badge-complete">Completed</span>
+                {% else %}
+                <span class="badge badge-pending">Pending</span>
+                {% endif %}
+              </td>
               <td>{{ t.priority }}</td>
               
               <td>
                 <a href="{% url 'update' t.id %}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{% url 'delete' t.id %}" class="btn btn-sm btn-danger">Delete</a>
+                <a href="{% url 'complete' t.id %}" class="btn btn-sm btn-complete" >Completed</a>
               </td>
             </tr>
             {% endfor %}

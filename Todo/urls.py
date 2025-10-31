@@ -30,4 +30,5 @@ urlpatterns = [
     path('update/<int:pk>',Taskupdateview.as_view(),name="update"),
     path('delete/<int:pk>',Taskdelete.as_view(),name="delete"), 
     path("",Baseview.as_view(),name="home"),
+    path("complete/<int:pk>",Taskcomplete.as_view(),name="complete")
 ]

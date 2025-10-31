@@ -5,7 +5,7 @@ from task_app.models import Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model =Task
-        fields = ["task","is_completed","priority"]
+        fields = ["task","priority"]
 
 
 # class TaskForm(forms.Form):
